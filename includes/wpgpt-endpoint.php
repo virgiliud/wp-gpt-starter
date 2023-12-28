@@ -1,7 +1,13 @@
 <?php
+/**
+ * Class WPGPT_Endpoint
+ * Handles custom REST API endpoints for the OpenAI API.
+ */
 class WPGPT_Endpoint extends WP_REST_Controller {
 
-    // Register the routes
+    /**
+     * Registers all routes for the endpoint.
+     */
     public function register_routes() {
         register_rest_route('wpgpt/v1', '/completions', array(
             'methods' => 'POST',
@@ -10,7 +16,12 @@ class WPGPT_Endpoint extends WP_REST_Controller {
         ));
     }
 
-    // Handle the OpenAI API request
+    /**
+     * Handles the OpenAI API request.
+     *
+     * @param WP_REST_Request $request Full data about the request.
+     * @return WP_Error|WP_REST_Response
+     */
     public function openai_api($request) {
         // Get the user message from the request
         $userMessage = $request->get_param('prompt');
@@ -70,12 +81,21 @@ class WPGPT_Endpoint extends WP_REST_Controller {
         return new WP_REST_Response($response_data, 200);
     }
 
-    // Check if a given request has access to the endpoint
+    /**
+     * Checks if the user has permission to access the endpoint.
+     *
+     * @param WP_REST_Request $request Full data about the request.
+     * @return bool
+     */
     public function openai_api_permissions_check($request) {
         return current_user_can('manage_options');
     }
 
-    // Helper function for error logging
+    /**
+     * Logs error messages.
+     *
+     * @param string $message The error message to log.
+     */
     protected function log_error($message) {
         if (defined('WP_DEBUG') && WP_DEBUG) {
             error_log($message);

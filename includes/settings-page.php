@@ -1,13 +1,22 @@
 <?php
+/**
+ * Class WPGPT_Settings_Page
+ * Manages the settings page for the WPGPT plugin.
+ */
 class WPGPT_Settings_Page {
 
-    // Menu and settings initialization
+    /**
+     * Constructor for WPGPT_Settings_Page.
+     * Sets up actions for admin menu and settings initialization.
+     */
     public function __construct() {
         add_action('admin_menu', array($this, 'add_settings_menu'));
         add_action('admin_init', array($this, 'initialize_settings'));
     }
 
-    // Add settings menu
+    /**
+     * Adds the settings menu to the WordPress admin.
+     */
     public function add_settings_menu() {
         if (!current_user_can('manage_options')) {
             return;
@@ -22,7 +31,9 @@ class WPGPT_Settings_Page {
         );
     }
 
-    // Initialize plugin settings
+    /**
+     * Initializes the plugin settings.
+     */
     public function initialize_settings() {
         register_setting('openaiPage', 'wpgpt_settings', array($this, 'sanitize'));
 
@@ -38,7 +49,12 @@ class WPGPT_Settings_Page {
         $this->add_settings_field('wpgpt_model', __('GPT Model', 'wpgpt'), $options);
     }
 
-    // Sanitize the inputs
+    /**
+     * Sanitizes the input received from the settings form.
+     * 
+     * @param array $input The input received from the settings form.
+     * @return array The sanitized input.
+     */
     public function sanitize($input) {
         $sanitized_input = array();
     
@@ -53,7 +69,13 @@ class WPGPT_Settings_Page {
         return $sanitized_input;
     }
 
-    // Add settings fields
+     /**
+     * Adds a settings field.
+     * 
+     * @param string $id The ID of the settings field.
+     * @param string $title The title of the settings field.
+     * @param array $options The options for the settings field.
+     */
     private function add_settings_field($id, $title, $options) {
         add_settings_field(
             $id,
@@ -68,7 +90,11 @@ class WPGPT_Settings_Page {
         );
     }
 
-    // Render the settings fields
+    /**
+     * Renders a settings field.
+     * 
+     * @param array $args Arguments for the settings field.
+     */
     public function render_settings_field($args) {
         $options = $args['options'];
         $value = isset($options[$args['id']]) ? esc_attr($options[$args['id']]) : '';
@@ -88,12 +114,16 @@ class WPGPT_Settings_Page {
         }
     }
 
-    // Callback for settings section description
+    /**
+     * Callback for the settings section description.
+     */
     public function settings_section_callback() {
         echo __('Please enter your OpenAI API key and select a GPT model.', 'wpgpt');
     }
 
-    // Render the settings page in WP admin
+    /**
+     * Renders the settings page in the WordPress admin.
+     */
     public function render_settings_page() {
         ?>
         <div class="wrap wpgpt-settings-page">

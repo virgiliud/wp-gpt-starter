@@ -9,10 +9,12 @@
  * Text Domain: wpgpt
  */
 
+// Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
+// Require files for the plugin
 require_once plugin_dir_path(__FILE__) . 'includes/wpgpt-endpoint.php';
 require_once plugin_dir_path(__FILE__) . 'includes/settings-page.php';
 require_once plugin_dir_path(__FILE__) . 'includes/admin-page.php';

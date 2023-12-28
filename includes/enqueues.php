@@ -1,12 +1,23 @@
 <?php
+/**
+ * Class WPGPT_Enqueue
+ * Handles the enqueuing of scripts and styles for the plugin in the admin area.
+ */
 class WPGPT_Enqueue {
 
-    // Set up enqueue
+    /**
+     * Constructor for WPGPT_Enqueue.
+     * Adds the 'admin_enqueue_scripts' action to enqueue scripts and styles.
+     */
     public function __construct() {
         add_action('admin_enqueue_scripts', array($this, 'enqueue_scripts_and_styles'));
     }
 
-    // Enqueue scripts and styles
+    /**
+     * Enqueues scripts and styles for the admin page of the plugin.
+     * 
+     * @param string $hook The current admin page hook.
+     */
     public function enqueue_scripts_and_styles($hook) {
         // Check if the current page is the admin page for the plugin
         if ('toplevel_page_wpgpt-admin' !== $hook) {
