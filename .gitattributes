@@ -1,0 +1,2 @@
+# Mark all files in the build directory as generated
+build/* linguist-generated=true

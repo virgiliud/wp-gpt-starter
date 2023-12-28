@@ -4,9 +4,8 @@
 
 A starter plugin for integrating OpenAI's GPT into WordPress.
 
-Plugin screenshots:
-
 ![Admin Page](images/admin-page.png)
+
 ![Settings Page](images/settings-page.png)
 
 ## Features
