@@ -5,15 +5,15 @@ class WPGPT_Endpoint extends WP_REST_Controller {
     public function register_routes() {
         register_rest_route('wpgpt/v1', '/completions', array(
             'methods' => 'POST',
-            'callback' => array($this, 'analyze_posts'),
-            'permission_callback' => array($this, 'analyze_posts_permissions_check')
+            'callback' => array($this, 'openai_api'),
+            'permission_callback' => array($this, 'openai_api_permissions_check')
         ));
     }
 
     // Handle the OpenAI API request
-    public function analyze_posts($request) {
+    public function openai_api($request) {
         // Get the user message from the request
-        $userMessage = $request->get_param('aiPrompt');
+        $userMessage = $request->get_param('prompt');
 
         // Get the plugin settings
         $options = get_option('wpgpt_settings');
@@ -71,7 +71,7 @@ class WPGPT_Endpoint extends WP_REST_Controller {
     }
 
     // Check if a given request has access to the endpoint
-    public function analyze_posts_permissions_check($request) {
+    public function openai_api_permissions_check($request) {
         return current_user_can('manage_options');
     }
 

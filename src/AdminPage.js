@@ -9,7 +9,7 @@ import ReactMarkdown from 'react-markdown';
 import './styles/main.scss';
 
 const AdminPage = () => {
-    const [aiPrompt, setAiPrompt] = useState('');
+    const [prompt, setPrompt] = useState('');
     const [response, setResponse] = useState('');
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false);
@@ -23,7 +23,7 @@ const AdminPage = () => {
         apiFetch({
             path: '/wpgpt/v1/completions',
             method: 'POST',
-            data: { aiPrompt }
+            data: { prompt }
         }).then((apiResponse) => {
             // Handle response errors
             if (apiResponse.error) {
@@ -38,6 +38,7 @@ const AdminPage = () => {
                 }
             }
             setIsLoading(false);
+            setPrompt('');
             setError('');
         }).catch((error) => {
             // Handle fetch errors
@@ -73,15 +74,15 @@ const AdminPage = () => {
 
                     {/* Textarea for user input */}
                     <TextareaControl
-                        value={aiPrompt}
+                        value={prompt}
                         rows={3}
-                        onChange={(value) => setAiPrompt(value)}
+                        onChange={(value) => setPrompt(value)}
                         placeholder={__('Enter text...', 'wpgpt')}
                         disabled={isLoading}
                     />
 
                     {/* Submit button */}
-                    <Button variant="primary" size="default" onClick={handleSubmit} disabled={isLoading || aiPrompt.trim() === ''}>
+                    <Button variant="primary" size="default" onClick={handleSubmit} disabled={isLoading || prompt.trim() === ''}>
                         {isLoading ? __('Generating...', 'wpgpt') : <span>{__('Generate', 'wpgpt')}</span>}
                     </Button>
                 </CardBody>
