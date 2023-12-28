@@ -18,4 +18,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 require_once plugin_dir_path(__FILE__) . 'includes/wpgpt-endpoint.php';
 require_once plugin_dir_path(__FILE__) . 'includes/settings-page.php';
 require_once plugin_dir_path(__FILE__) . 'includes/admin-page.php';
-require_once plugin_dir_path(__FILE__) . 'includes/enqueues.php';
+require_once plugin_dir_path(__FILE__) . 'includes/enqueues.php'; 
