@@ -1,0 +1,1 @@
+{"version":3,"file":"index.css","mappings":";;;AAAA;AACA;EACI;AACJ;;AAEA;EACI;AACJ;;AAEA,kC","sources":["webpack://wpgpt/./src/styles/main.scss"],"sourcesContent":["/* General styles for the settings page */\n.wrap h1 {\n    margin-bottom: 1rem; \n}\n\n.components-notice {\n    margin: 0 0 1rem;\n}\n\n/* Add your custom styles below */"],"names":[],"sourceRoot":""}

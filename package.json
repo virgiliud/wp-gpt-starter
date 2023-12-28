@@ -1,0 +1,19 @@
+{
+  "name": "wpgpt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "wp-scripts start",
+    "build": "wp-scripts build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@wordpress/scripts": "^26.18.0"
+  },
+  "dependencies": {
+    "react-feather": "^2.0.10",
+    "react-markdown": "^9.0.1"
+  }
+}
