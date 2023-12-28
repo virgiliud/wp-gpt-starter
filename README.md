@@ -13,7 +13,7 @@ A starter plugin for integrating OpenAI's GPT into WordPress.
 - **OpenAI API Integration**: Connect your WordPress site with OpenAI's GPT models.
 - **Custom REST API Endpoint**: The plugin includes a custom REST API endpoint `/wpgpt/v1/completions` to interact with the OpenAI Chat Completions API.
 - **Flexible Settings Page**: Configure your OpenAI API key and select between two GPT models: GPT-3.5 Turbo and GPT-4. Additional models can be added to the `settings-page.php` file.
-- **Interactive Admin Page**: A React-based admin page where you can send requests to the custom endpoint and receive responses from the OpenAI API. The page is built using WP Scripts and WP Components, allowing for customization according to your requirements.
+- **Interactive Admin Page**: A React-based admin page where you can send requests to the custom endpoint and receive responses from the OpenAI API. The page is built using WP Scripts and WP Components, allowing for customization based on your requirements.
 
 ## Installation
 
@@ -75,7 +75,7 @@ The WP GPT Starter Plugin implements comprehensive error handling:
 
 ### Customizing Error Responses
 
-Developers have the flexibility to customize error responses based on the HTTP status by modifying the endpoint file. HTTP status codes are captured in the `$http_status` variable. 
+Developers can customize error responses based on the HTTP status by modifying the `wpgpt-endpoint.php` file. HTTP status codes are captured in the `$http_status` variable. 
 
 ## License
 
