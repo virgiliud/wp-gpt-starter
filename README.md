@@ -56,6 +56,7 @@ The plugin registers a custom REST API endpoint at `wpgpt/v1/completions`. You c
 ### Sending Requests
 
 - Send a POST request to `yourdomain.com/wp-json/wpgpt/v1/completions` with the necessary payload.
+- The payload for the request should be a JSON object containing a single key-value pair. The key is `prompt`, and its value should be the text prompt you want to process.
 - The payload and response format follow the OpenAI API structure.
 
 ## Customizing the Admin Page
