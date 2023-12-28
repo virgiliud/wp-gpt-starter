@@ -14,6 +14,12 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
+// Load the plugin text domain for translation
+function wpgpt_load_textdomain() {
+    load_plugin_textdomain( 'wpgpt', false, basename( dirname( __FILE__ ) ) . '/languages' );
+}
+add_action( 'plugins_loaded', 'wpgpt_load_textdomain' );
+
 // Require files for the plugin
 require_once plugin_dir_path(__FILE__) . 'includes/wpgpt-endpoint.php';
 require_once plugin_dir_path(__FILE__) . 'includes/settings-page.php';
