@@ -2,7 +2,7 @@
 
 ## Description
 
-A starter plugin for connecting to OpenAI's API from WordPress.
+A starter plugin for connecting WordPress to OpenAI's API.
 
 ![Admin Page](images/admin-page.png)
 
