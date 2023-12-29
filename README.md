@@ -2,7 +2,7 @@
 
 ## Description
 
-A starter plugin for integrating OpenAI's GPT into WordPress.
+A starter plugin for connecting to OpenAI's API from WordPress.
 
 ![Admin Page](images/admin-page.png)
 
