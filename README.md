@@ -1,4 +1,4 @@
-# WordPress OpenAI GPT Starter Plugin
+# WordPress + OpenAI GPT Starter Plugin
 
 ## Description
 
