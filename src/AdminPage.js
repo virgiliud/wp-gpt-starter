@@ -5,7 +5,7 @@ import { useState } from '@wordpress/element';
 import apiFetch from '@wordpress/api-fetch';
 import ReactMarkdown from 'react-markdown';
 
-// Import style
+// Import styles
 import './styles/main.scss';
 
 const AdminPage = () => {
