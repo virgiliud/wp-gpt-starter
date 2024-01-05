@@ -24,15 +24,36 @@ A starter plugin for connecting WordPress to OpenAI's API.
 
 ## Configuration
 
-### Setting Up OpenAI API Key
+### Set Your OpenAI API Key
 
 1. Navigate to the plugin's settings page in the WordPress admin area.
 2. Enter your OpenAI API key in the provided field.
 3. Select the desired GPT model from the dropdown menu.
 
-### Adding More Models
+### Add More Models
 
 You can add more models by editing the `settings-page.php` file.
+
+### Customize the AI Prompt
+
+To customize the AI prompt to better suit your specific use case, follow these steps:
+
+1. **Locate the AI Prompt**: 
+   The AI prompt can be found in `includes/wpgpt-endpoint.php`, in the `openai_api` function. This function handles the OpenAI API request.
+
+2. **Modify the System Message**: 
+   To change the AI's system message, locate the following line:
+   ```php
+   ["role" => "system", "content" => "You are a helpful assistant."]
+   ```
+   This line sets up the initial context for the AI. You can modify the "content" part of this array to change the default behavior or context provided to the AI.
+
+3. **Modify the Prompt Message**: 
+   The user's message is captured and sent to the API with this line:
+   ```php
+   ["role" => "user", "content" => $userMessage]
+   ```
+   `$userMessage` is obtained from the request. You can prepend or append additional content to `$userMessage` if you want to provide more context or instructions to the AI.
 
 ## Using WP Scripts for Development
 
