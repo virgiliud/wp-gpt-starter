@@ -4,9 +4,9 @@
 
 A starter plugin for connecting WordPress to OpenAI's API.
 
-![Admin Page](images/admin-page.png)
+<img width="100%" alt="admin-page" src="https://github.com/virgiliud/wp-gpt-starter/assets/3076742/569f0d35-1469-4296-9fe0-86ccc744eca6">
 
-![Settings Page](images/settings-page-v2.png)
+<img width="100%" alt="settings-page-v2" src="https://github.com/virgiliud/wp-gpt-starter/assets/3076742/25125e2b-f346-4b8c-b5cf-0708af6b91f4">
 
 ## Features
 
