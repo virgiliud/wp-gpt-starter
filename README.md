@@ -20,7 +20,7 @@ A starter plugin for connecting WordPress to OpenAI's API.
 
 1. Download or clone the repository into your WordPress `plugins` directory.
 2. Navigate to your WordPress admin dashboard and go to the Plugins section.
-3. Locate 'WP GPT Starter Plugin' and activate it.
+3. Locate "WP GPT Starter Plugin" and activate it.
 
 ## Configuration
 
