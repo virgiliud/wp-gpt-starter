@@ -2,7 +2,7 @@
 
 ## Description
 
-A starter plugin for connecting WordPress to OpenAI's API.
+A starter plugin for connecting WordPress to OpenAI's text generation GPT models.
 
 <img width="100%" alt="admin-page" src="https://github.com/virgiliud/wp-gpt-starter/assets/3076742/569f0d35-1469-4296-9fe0-86ccc744eca6">
 
