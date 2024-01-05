@@ -98,7 +98,7 @@ The WP GPT Starter Plugin implements comprehensive error handling:
 
 ### Customizing Error Responses
 
-Developers can customize error responses based on the HTTP status by modifying the `wpgpt-endpoint.php` file. HTTP status codes are captured in the `$http_status` variable. 
+You can customize error responses based on the HTTP status by modifying the `wpgpt-endpoint.php` file. HTTP status codes are captured in the `$http_status` variable. 
 
 ## License
 
