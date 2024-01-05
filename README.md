@@ -30,7 +30,7 @@ A starter plugin for connecting WordPress to OpenAI's API.
 2. Enter your OpenAI API key in the provided field.
 3. Select the desired GPT model from the dropdown menu.
 
-### Add More Models
+### Add More GPT Models
 
 You can add more models by editing the `settings-page.php` file.
 
