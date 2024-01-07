@@ -12,7 +12,16 @@ class WPGPT_Endpoint extends WP_REST_Controller {
         register_rest_route('wpgpt/v1', '/completions', array(
             'methods' => 'POST',
             'callback' => array($this, 'openai_api'),
-            'permission_callback' => array($this, 'openai_api_permissions_check')
+            'permission_callback' => array($this, 'openai_api_permissions_check'),
+            'args' => array(
+                'prompt' => array(
+                    'required' => true,
+                    'validate_callback' => function($param, $request, $key) {
+                        return is_string($param);
+                    },
+                    'sanitize_callback' => 'sanitize_text_field'
+                )
+            )
         ));
     }
 
