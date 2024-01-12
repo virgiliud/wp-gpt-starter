@@ -7,7 +7,7 @@ class WPGPT_Enqueue {
 
     /**
      * Constructor for WPGPT_Enqueue.
-     * Adds the 'admin_enqueue_scripts' action to enqueue scripts and styles.
+     * Action to enqueue scripts and styles.
      */
     public function __construct() {
         add_action('admin_enqueue_scripts', array($this, 'enqueue_scripts_and_styles'));
