@@ -12,16 +12,7 @@ class WPGPT_Endpoint extends WP_REST_Controller {
         register_rest_route('wpgpt/v1', '/completions', array(
             'methods' => 'POST',
             'callback' => array($this, 'openai_api'),
-            'permission_callback' => array($this, 'openai_api_permissions_check'),
-            'args' => array(
-                'prompt' => array(
-                    'required' => true,
-                    'validate_callback' => function($param, $request, $key) {
-                        return is_string($param);
-                    },
-                    'sanitize_callback' => 'sanitize_text_field'
-                )
-            )
+            'permission_callback' => array($this, 'openai_api_permissions_check')
         ));
     }
 
@@ -72,8 +63,8 @@ class WPGPT_Endpoint extends WP_REST_Controller {
         // Check for JSON parsing errors
         if (json_last_error() !== JSON_ERROR_NONE) {
             $json_error_msg = json_last_error_msg();
-            $this->log_error('JSON parsing error: ' . $json_error_msg);
-            return new WP_Error('json_error', 'JSON parsing error: ' . $json_error_msg, array('status' => 500));
+            $this->log_error(__('JSON parsing error: ', 'wpgpt') . $json_error_msg);
+            return new WP_Error('json_error', __('JSON parsing error: ', 'wpgpt') . $json_error_msg, array('status' => 500));
         }
 
         // Retrieve the HTTP status code
@@ -82,7 +73,7 @@ class WPGPT_Endpoint extends WP_REST_Controller {
         // Handle the error if the status is not a success (200 OK)
         if ($http_status !== 200) {
             $error_message = isset($response_data['error']['message']) ? $response_data['error']['message'] : __('Unknown error', 'wpgpt');
-            $this->log_error('API error: ' . $error_message);
+            $this->log_error(__('API error: ', 'wpgpt') . $error_message);
             return new WP_REST_Response(['error' => true, 'message' => $error_message, 'status' => $http_status], $http_status);
         }
 

@@ -6,17 +6,17 @@
 class WPGPT_AdminPage {
 
     /**
-     * Constructor for WPGPT_AdminPage.
-     * Adds the 'admin_menu' action to register the admin menu.
+     * Initialize the class.
+     * Register the admin menu.
      */
-    public function __construct() {
-        add_action('admin_menu', array($this, 'add_admin_menu'));
+    public static function init() {
+        add_action('admin_menu', array('WPGPT_AdminPage', 'add_admin_menu'));
     }
 
     /**
-     * Renders the HTML content for the admin page.
+     * Render the HTML content for the admin page.
      */
-    public function admin_page_html() {
+    public static function admin_page_html() {
         // Check user capability
         if (!current_user_can('manage_options')) {
             return;
@@ -30,15 +30,15 @@ class WPGPT_AdminPage {
     }
 
     /**
-     * Registers the admin page in the WordPress dashboard.
+     * Register the admin page in the WordPress dashboard.
      */
-    public function add_admin_menu() {
+    public static function add_admin_menu() {
         add_menu_page(
             'OpenAI GPT',
             'OpenAI GPT',
             'manage_options',
             'wpgpt-admin',
-            array($this, 'admin_page_html'),
+            array('WPGPT_AdminPage', 'admin_page_html'),
             'dashicons-admin-generic',
             6
         );
@@ -46,4 +46,4 @@ class WPGPT_AdminPage {
 }
 
 // Initialize the admin page class
-new WPGPT_AdminPage();
+WPGPT_AdminPage::init();

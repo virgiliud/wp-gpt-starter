@@ -6,19 +6,19 @@
 class WPGPT_Enqueue {
 
     /**
-     * Constructor for WPGPT_Enqueue.
-     * Action to enqueue scripts and styles.
+     * Initialize the class.
+     * Enqueue scripts and styles.
      */
-    public function __construct() {
-        add_action('admin_enqueue_scripts', array($this, 'enqueue_scripts_and_styles'));
+    public static function init() {
+        add_action('admin_enqueue_scripts', array('WPGPT_Enqueue', 'enqueue_scripts_and_styles'));
     }
 
     /**
-     * Enqueues scripts and styles for the admin page of the plugin.
+     * Enqueue scripts and styles for the admin page of the plugin.
      * 
      * @param string $hook The current admin page hook.
      */
-    public function enqueue_scripts_and_styles($hook) {
+    public static function enqueue_scripts_and_styles($hook) {
         // Check if the current page is the admin page for the plugin
         if ('toplevel_page_wpgpt-admin' !== $hook) {
             return;
@@ -47,4 +47,5 @@ class WPGPT_Enqueue {
     }
 }
 
-new WPGPT_Enqueue();
+// Initialize the enqueue class
+WPGPT_Enqueue::init();

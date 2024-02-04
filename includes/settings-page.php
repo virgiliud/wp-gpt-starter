@@ -7,17 +7,17 @@ class WPGPT_Settings_Page {
 
     /**
      * Constructor for WPGPT_Settings_Page.
-     * Sets up actions for admin menu and settings initialization.
+     * Add admin menu and initialize settings.
      */
-    public function __construct() {
-        add_action('admin_menu', array($this, 'add_settings_menu'));
-        add_action('admin_init', array($this, 'initialize_settings'));
+    public static function init() {
+        add_action('admin_menu', array('WPGPT_Settings_Page', 'add_settings_menu'));
+        add_action('admin_init', array('WPGPT_Settings_Page', 'initialize_settings'));
     }
 
     /**
-     * Adds the settings menu to the WordPress admin.
+     * Add the settings menu to the WordPress admin.
      */
-    public function add_settings_menu() {
+    public static function add_settings_menu() {
         if (!current_user_can('manage_options')) {
             return;
         }
@@ -27,35 +27,35 @@ class WPGPT_Settings_Page {
             __('OpenAI GPT', 'wpgpt'),
             'manage_options',
             'wpgpt',
-            array($this, 'render_settings_page')
+            array('WPGPT_Settings_Page', 'render_settings_page')
         );
     }
 
     /**
-     * Initializes the plugin settings.
+     * Initialize the plugin settings.
      */
-    public function initialize_settings() {
-        register_setting('openaiPage', 'wpgpt_settings', array($this, 'sanitize'));
+    public static function initialize_settings() {
+        register_setting('openaiPage', 'wpgpt_settings', array('WPGPT_Settings_Page', 'sanitize'));
 
         add_settings_section(
             'wpgpt_openaiPage_section',
             __('OpenAI Configuration', 'wpgpt'),
-            array($this, 'settings_section_callback'),
+            array('WPGPT_Settings_Page', 'settings_section_callback'),
             'openaiPage'
         );
 
         $options = get_option('wpgpt_settings');
-        $this->add_settings_field('wpgpt_api_key', __('OpenAI API Key', 'wpgpt'), $options);
-        $this->add_settings_field('wpgpt_model', __('GPT Model', 'wpgpt'), $options);
+        self::add_settings_field('wpgpt_api_key', __('OpenAI API Key', 'wpgpt'), $options);
+        self::add_settings_field('wpgpt_model', __('GPT Model', 'wpgpt'), $options);
     }
 
     /**
-     * Sanitizes the input received from the settings form.
+     * Sanitize the input received from the settings form.
      * 
      * @param array $input The input received from the settings form.
      * @return array The sanitized input.
      */
-    public function sanitize($input) {
+    public static function sanitize($input) {
         $sanitized_input = array();
     
         if (isset($input['wpgpt_api_key'])) {
@@ -70,17 +70,17 @@ class WPGPT_Settings_Page {
     }
 
      /**
-     * Adds a settings field.
+     * Add a settings field.
      * 
      * @param string $id The ID of the settings field.
      * @param string $title The title of the settings field.
      * @param array $options The options for the settings field.
      */
-    private function add_settings_field($id, $title, $options) {
+    private static function add_settings_field($id, $title, $options) {
         add_settings_field(
             $id,
             $title,
-            array($this, 'render_settings_field'),
+            array('WPGPT_Settings_Page', 'render_settings_field'),
             'openaiPage',
             'wpgpt_openaiPage_section',
             array(
@@ -91,11 +91,11 @@ class WPGPT_Settings_Page {
     }
 
     /**
-     * Renders a settings field.
+     * Render a settings field.
      * 
      * @param array $args Arguments for the settings field.
      */
-    public function render_settings_field($args) {
+    public static function render_settings_field($args) {
         $options = $args['options'];
         $value = isset($options[$args['id']]) ? esc_attr($options[$args['id']]) : '';
         
@@ -117,14 +117,14 @@ class WPGPT_Settings_Page {
     /**
      * Callback for the settings section description.
      */
-    public function settings_section_callback() {
+    public static function settings_section_callback() {
         echo __('Please enter your OpenAI API key and select a GPT model.', 'wpgpt');
     }
 
     /**
-     * Renders the settings page in the WordPress admin.
+     * Render the settings page in the WordPress admin.
      */
-    public function render_settings_page() {
+    public static function render_settings_page() {
         ?>
         <div class="wrap wpgpt-settings-page">
             <form action='options.php' method='post'>
@@ -149,4 +149,5 @@ class WPGPT_Settings_Page {
     }
 }
 
-new WPGPT_Settings_Page();
+// Initialize the settings page class
+WPGPT_Settings_Page::init();
