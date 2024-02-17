@@ -6,7 +6,7 @@
 class WPGPT_Settings_Page {
 
     /**
-     * Constructor for WPGPT_Settings_Page.
+     * Initialize the class.
      * Add admin menu and initialize settings.
      */
     public static function init() {
