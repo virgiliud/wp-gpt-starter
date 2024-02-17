@@ -16,7 +16,7 @@ class WPGPT_Language_Setup {
      * Load the plugin text domain for translation.
      */
     public static function load_textdomain() {
-        load_plugin_textdomain('wpgpt', false, basename(dirname(__FILE__)) . '/languages');
+        load_plugin_textdomain('wpgpt', false, plugin_basename(dirname(__DIR__)) . '/languages');
     }
 }
 
