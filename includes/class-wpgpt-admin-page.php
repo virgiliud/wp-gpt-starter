@@ -34,8 +34,8 @@ class WPGPT_Admin_Page {
 	 */
 	public static function add_admin_menu() {
 		add_menu_page(
-			'OpenAI GPT',
-			'OpenAI GPT',
+			__('OpenAI GPT', 'wpgpt'),
+			__('OpenAI GPT', 'wpgpt'),
 			'manage_options',
 			'wpgpt-admin',
 			array( 'WPGPT_Admin_Page', 'admin_page_html' ),
